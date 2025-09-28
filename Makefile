@@ -30,3 +30,15 @@ clean:
 
 # Declara regras que não geram arquivos
 .PHONY: all clean
+
+# Testes:
+TEST_TARGET = testes
+TEST_SRCS   = testes.c util.c wug.c
+TEST_OBJS   = $(TEST_SRCS:.c=.o)
+
+$(TEST_TARGET): $(TEST_OBJS)
+	$(CC) $(CFLAGS) -o $(TEST_TARGET) $(TEST_OBJS)
+
+clean-tests:
+	rm -f $(TEST_OBJS) $(TEST_TARGET)
+
